@@ -1,0 +1,22 @@
+|        param|                   value|         unc|        units|
+|         char|                    char|        char|         char|
+|             |                        |            |             |
+|         null|                    null|        null|         null|
+          name WISE J154151.65-225024.9           --            -- 
+            ra               235.465245           --           deg 
+           dec               -22.840333           --           deg 
+           age                      4.5          4.0           Gyr 
+    membership                       --           --            -- 
+      distance                      5.8         0.05            pc 
+      parallax                   172.28         1.55           mas 
+           SpT                      Y0V           --            -- 
+ spectral_type                     90.0          0.5            -- 
+          fbol                 2.75e-13     4.55e-15 erg / (s cm2) 
+          mbol                    19.92        0.017            -- 
+          Lbol                 1.11e+27     2.64e+25       erg / s 
+      Lbol_sun                    -6.54         0.01            -- 
+          Mbol                   21.103        0.019            -- 
+          Teff                      424 -7.00 +19.00             K 
+          logg                     4.65  -0.25 +0.15            -- 
+          mass                     18.0  -8.00 +5.00   jupiterMass 
+        radius                    0.968  -0.03 +0.09    jupiterRad 

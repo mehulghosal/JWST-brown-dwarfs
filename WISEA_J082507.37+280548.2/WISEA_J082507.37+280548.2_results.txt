@@ -1,0 +1,22 @@
+|        param|                    value|         unc|        units|
+|         char|                     char|        char|         char|
+|             |                         |            |             |
+|         null|                     null|        null|         null|
+          name WISEA J082507.37+280548.2           --            -- 
+            ra                126.280654           --           deg 
+           dec                 28.096822           --           deg 
+           age                       4.5          4.0           Gyr 
+    membership                        --           --            -- 
+      distance                      6.55         0.09            pc 
+      parallax                     152.6          2.0           mas 
+           SpT                     Y0.5V           --            -- 
+ spectral_type                      90.5          0.5            -- 
+          fbol                  1.77e-13     2.58e-15 erg / (s cm2) 
+          mbol                    20.399        0.016            -- 
+          Lbol                  9.08e+26     2.82e+25       erg / s 
+      Lbol_sun                     -6.62        0.014            -- 
+          Mbol                    21.318        0.022            -- 
+          Teff                       402 -7.00 +18.00             K 
+          logg                      4.61  -0.25 +0.13            -- 
+          mass                      17.0  -7.00 +4.00   jupiterMass 
+        radius                     0.974  -0.03 +0.09    jupiterRad 

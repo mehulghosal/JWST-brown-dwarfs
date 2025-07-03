@@ -1,0 +1,22 @@
+|        param|                    value|          unc|        units|
+|         char|                     char|         char|         char|
+|             |                         |             |             |
+|         null|                     null|         null|         null|
+          name WISEU J050305.68-564834.0            --            -- 
+            ra         75.77366666666666            --           deg 
+           dec       -56.809444444444445            --           deg 
+           age                       4.5           4.0           Gyr 
+    membership                        --            --            -- 
+      distance                     10.19          0.39            pc 
+      parallax                      98.3           3.9           mas 
+           SpT                        --            --            -- 
+ spectral_type                        --            --            -- 
+          fbol                  5.31e-14      6.75e-16 erg / (s cm2) 
+          mbol                    21.705         0.014            -- 
+          Lbol                   6.6e+26      5.12e+25       erg / s 
+      Lbol_sun                     -6.76         0.034            -- 
+          Mbol                    21.664         0.044            -- 
+          Teff                       366 -11.00 +13.00             K 
+          logg                      4.55   -0.27 +0.14            -- 
+          mass                      14.0   -5.00 +4.00   jupiterMass 
+        radius                     1.003   -0.05 +0.06    jupiterRad 

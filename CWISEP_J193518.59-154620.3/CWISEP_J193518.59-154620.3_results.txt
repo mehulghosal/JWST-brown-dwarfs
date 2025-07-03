@@ -1,0 +1,22 @@
+|        param|                     value|          unc|        units|
+|         char|                      char|         char|         char|
+|             |                          |             |             |
+|         null|                      null|         null|         null|
+          name CWISEP J193518.59-154620.3            --            -- 
+            ra         19.588414472222222            --           deg 
+           dec                -15.7725725            --           deg 
+           age                        4.5           4.0           Gyr 
+    membership                         --            --            -- 
+      distance                      14.42          0.77            pc 
+      parallax                       69.3           3.8           mas 
+           SpT                         --            --            -- 
+ spectral_type                         --            --            -- 
+          fbol                   5.96e-14      1.27e-15 erg / (s cm2) 
+          mbol                     21.579         0.022            -- 
+          Lbol                   1.48e+27      1.62e+26       erg / s 
+      Lbol_sun                      -6.41         0.047            -- 
+          Mbol                     20.784         0.062            -- 
+          Teff                        461 -15.00 +26.00             K 
+          logg                       4.75   -0.34 +0.14            -- 
+          mass                       20.0   -8.00 +5.00   jupiterMass 
+        radius                      0.947   -0.04 +0.09    jupiterRad 

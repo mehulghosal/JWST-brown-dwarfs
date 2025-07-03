@@ -1,0 +1,22 @@
+|        param|                    value|          unc|        units|
+|         char|                     char|         char|         char|
+|             |                         |             |             |
+|         null|                     null|         null|         null|
+          name WISEP J075108.79-763449.6            --            -- 
+            ra                   7.85243            --           deg 
+           dec        -76.58063777777777            --           deg 
+           age                     414.0          23.0           Myr 
+    membership                        --            --            -- 
+      distance                     10.23           0.7            pc 
+      parallax                      97.9           6.7           mas 
+           SpT                       T9V            --            -- 
+ spectral_type                      89.0           0.5            -- 
+          fbol                  1.76e-13      2.23e-15 erg / (s cm2) 
+          mbol                    20.404         0.014            -- 
+          Lbol                   2.2e+27      3.03e+26       erg / s 
+      Lbol_sun                     -6.24          0.06            -- 
+          Mbol                    20.355         0.076            -- 
+          Teff                       468 -16.00 +16.00             K 
+          logg                      4.16   -0.07 +0.04            -- 
+          mass                       7.0   -1.00 +1.00   jupiterMass 
+        radius                     1.123   -0.01 +0.02    jupiterRad 
