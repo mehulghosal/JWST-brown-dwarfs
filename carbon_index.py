@@ -3,13 +3,22 @@ from os.path import isdir, isfile, join
 import plot_utils as plt
 import numpy as np
 import matplotlib.pyplot as plot
+import matplotlib.patches as patches
+
+from scipy.optimize import curve_fit
+
+def line ( x , m , b ):
+	return m * x + b
 
 directory = './'	
 dir_names = [directory+f+'/' for f in os.listdir(directory) if isdir(join(directory,f))] 
 
-for directory_name in dir_names: 
+# print(dir_names)
 
-	if 'pycache' in directory_name: continue
+for directory_name in dir_names: 
+	print(directory_name)
+
+	if 'pycache' in directory_name or 'git' in directory_name : continue
 
 	apparent_file_name = directory_name.split('/')[1] + '_apparent_SED.txt'
 
@@ -27,14 +36,14 @@ for directory_name in dir_names:
 	apparent_flux_error = apparent_file [:,2]
 
 	# PLOTTING FLUX vs WAVELENGTH
-	fig_app , ax_app = plt.errorbar( wavelength_microns , apparent_flux , yerr= apparent_flux_error, title=directory_name.split('/')[1] , xlabel='wavelength [micron]' , ylabel='Apparent flux' , xlim=[3.6,5.] , ylim=[0, np.max(apparent_flux) * 1.1] , label="flux density" , markerstyle='.' , color='blue' , markersize=2 , linewidth=1 , ecolor='black' )
+	fig_app , ax_app = plt.errorbar( wavelength_microns , apparent_flux , yerr= apparent_flux_error, title=directory_name.split('/')[1] , xlabel='wavelength [micron]' , ylabel='Apparent flux' , xlim=[3.6,5.] , ylim=[0, np.max(apparent_flux[wavelength_microns>3.6]) * 1.1] , label="flux density" , markerstyle='.' , color='blue' , markersize=2 , linewidth=1 , ecolor='black' )
 
 	# FOR CO2 INDEX
 	continuum_wl_CO2 = 4.15
-	wl_width         = .05
+	wl_width         = .05/2
 	# ABSORPOTION FEATURE DETAILS
-	CO2_center = 4.3
-	CO2_width  = .05
+	CO2_center = 4.29
+	CO2_width  = .05/2
 
 	# SLICING WAVELENGTHS TO REGION OF INTEREST: isolating the continuum wavelengths
 	where_continuum = np.where( (wavelength_microns < continuum_wl_CO2 + wl_width) & (wavelength_microns > continuum_wl_CO2 - wl_width) )
@@ -45,10 +54,10 @@ for directory_name in dir_names:
 
 	# REDFINE CONTINUUM SPECTRA FOR CO
 	continuum_wl_CO = 4.4
-	wl_width     = .05
+	wl_width     = .05/2
 	# ABSORBTION FEATURE DETAILS
 	CO_center = 4.56
-	CO_width  = .05
+	CO_width  = .05/2
 
 	# SLICING WAVELENGTHS TO REGION OF INTEREST: isolating the continuum wavelengths
 	where_continuumCO = np.where( (wavelength_microns < continuum_wl_CO + wl_width) & (wavelength_microns > continuum_wl_CO - wl_width) )
@@ -68,13 +77,25 @@ for directory_name in dir_names:
 	# CO  index: 2.08
 
 	# PLOTTING CONTINUUM FLUX AVERAGES
-	plt.plot_existing( fig_app , ax_app , continuum_wl_CO2 , app_flux_continuum    , label=f'Continuum for CO2' , markerfacecolor='red'   , markersize=20 , markerstyle='*' )
-	plt.plot_existing( fig_app , ax_app , continuum_wl_CO  , app_flux_continuumCO  , label=f'Continuum used CO' , markerfacecolor='green' , markersize=20 , markerstyle='*' )
+	plt.plot_existing( fig_app , ax_app , continuum_wl_CO2 , app_flux_continuum    , label=f'Center={continuum_wl_CO2}' , markerfacecolor='red'   , markersize=20 , markerstyle='*' )
+	plt.plot_existing( fig_app , ax_app , continuum_wl_CO  , app_flux_continuumCO  , label=f'Center={continuum_wl_CO }' , markerfacecolor='green' , markersize=20 , markerstyle='*' )
 
 	# PLOTTING ABSORPTION FEATURE FLUX AVERAGES
-	plt.plot_existing( fig_app , ax_app , CO2_center  , app_flux_CO2  , label=f'CO2 INDEX={CO2_index:.2f}' , markerfacecolor='red'   , markersize=20 )
-	plt.plot_existing( fig_app , ax_app , CO_center   , app_flux_CO   , label=f'CO  INDEX={CO_index :.2f}'  , markerfacecolor='green' , markersize=20 , leg=True )
+	plt.plot_existing( fig_app , ax_app , CO2_center  , app_flux_CO2  , label=f'CO2 INDEX={CO2_index:.2f}' , markerfacecolor='red'    , markersize=20 )
+	plt.plot_existing( fig_app , ax_app , CO_center   , app_flux_CO   , label=f'CO  INDEX={CO_index :.2f}'  , markerfacecolor='green' , markersize=20 )
 
+	rect1 = patches.Rectangle((continuum_wl_CO2 -wl_width, 0), wl_width*2, 1e-16, linewidth=1, edgecolor='black', facecolor='red'    , alpha=.5 , label=f'window={wl_width}' )
+	rect2 = patches.Rectangle((continuum_wl_CO  -wl_width, 0), wl_width*2, 1e-16, linewidth=1, edgecolor='black', facecolor='green'  , alpha=.5 , label=f'window={wl_width}' )
+	rect3 = patches.Rectangle((CO2_center       -wl_width, 0), wl_width*2, 1e-16, linewidth=1, edgecolor='black', facecolor='orange' , alpha=.5 , label=f'Center={CO2_center } \nwindow={wl_width}' )
+	rect4 = patches.Rectangle((CO_center        -wl_width, 0), wl_width*2, 1e-16, linewidth=1, edgecolor='black', facecolor='cyan'   , alpha=.5 , label=f'Center={CO_center  } \nwindow={wl_width}' )
+	ax_app.add_patch(rect1)
+	ax_app.add_patch(rect2)
+	ax_app.add_patch(rect3)
+	ax_app.add_patch(rect4)
+
+	ax_app.legend(loc='upper left')
+
+	# if True: break
 	plot.savefig ( directory_name.split('/')[1]+'.png'  )
 
 
